@@ -21,6 +21,7 @@ export interface Case {
   feeType: FeeType
   feePaid?: number
   damages?: string
+  exposure?: { lo: number; hi: number; mean: number }
   summary: string
   legalBasis: string[]
   procedural: string[]
@@ -45,6 +46,7 @@ export const CASES: Case[] = [
     feeType: 'waiver',
     feePaid: 435,
     damages: '$109,408+ in lost CDL wages; ongoing $6,000/month losses',
+    exposure: { lo: 200000, hi: 275000, mean: 237500 },
     summary:
       'State tort action targeting procedural and substantive deficiencies in a November 2025 discharge review. Defendants fabricated a "10-year parole term" and "6.5-year" minimum supervision requirement with no basis in law. The review used obsolete Form 1502-DR (Rev. 01/22) riddled with copy-paste errors instead of the mandated Form 3043. Causes of action include false imprisonment, IIED, and breach of mandatory duty under the Government Claims Act.',
     legalBasis: [
@@ -76,6 +78,7 @@ export const CASES: Case[] = [
     filingWave: 1,
     feeType: 'paid',
     feePaid: 405,
+    exposure: { lo: 35000, hi: 85000, mean: 60000 },
     summary:
       'Federal constitutional challenge to CDCR Policy 19-03, which imposes rigid categorical temporal minimums on parole discharge eligibility. The policy directly conflicts with Penal Code § 3008(d) and Title 15, CCR § 3574 (April 2025 revision). Secretary Macomber is named in his official capacity only, invoking Ex parte Young to bypass Eleventh Amendment sovereign immunity and obtain prospective injunctive relief.',
     legalBasis: [
@@ -110,6 +113,7 @@ export const CASES: Case[] = [
     feeType: 'paid',
     feePaid: 405,
     damages: '$1,534–$2,301 in lost commercial driver wages',
+    exposure: { lo: 25000, hi: 75000, mean: 50000 },
     summary:
       'Challenges an arbitrary 5-day detention from November 1–6, 2024. Plaintiff was arrested for DUI; the DA never filed charges. A parole hold was then placed based on an invalid "Halloween curfew" Special Condition No. 063 — a condition facially invalid as applied per People v. Lent. The CHP issued a formal Detention Certificate under PC § 849(b)(1) on November 5, 2024, certifying "insufficient grounds" for the original arrest, yet the parole hold continued.',
     legalBasis: [
@@ -142,6 +146,7 @@ export const CASES: Case[] = [
     filingWave: 2,
     feeType: 'paid',
     feePaid: 405,
+    exposure: { lo: 90000, hi: 175000, mean: 132500 },
     summary:
       'Challenges the DMV Administrative Per Se (APS) hearing framework for CDL suspension. Plaintiff was asleep in a parked vehicle when arrested — no volitional movement. The CHP issued a Detention Certificate under PC § 849(b)(1) certifying "insufficient grounds." Despite this, DMV Hearing Officer Gordon sustained a 1-year CDL suspension on January 24, 2025. Invokes California DUI Lawyers Ass\'n v. DMV (2022) to attack the structural bias of the DMV dual-role hearing officer system.',
     legalBasis: [

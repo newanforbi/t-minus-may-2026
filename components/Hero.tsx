@@ -3,7 +3,7 @@
 import { useCountdown } from '@/hooks/useCountdown'
 import { CASES } from '@/data/cases'
 import { DEFENDANTS } from '@/data/defendants'
-import { Scale, Building2, Users, DollarSign, AlertTriangle } from 'lucide-react'
+import { Scale, Building2, Users, TrendingUp, AlertTriangle } from 'lucide-react'
 
 const FILING_DATE = '2026-05-08T09:00:00-07:00'
 
@@ -38,14 +38,17 @@ function Divider() {
 export default function Hero() {
   const { days, hours, minutes, seconds, isPast } = useCountdown(FILING_DATE)
 
-  const totalDamages = '$109,408+'
   const totalFees = (CASES.filter((c) => c.feeType === 'paid').length * 405).toLocaleString()
+  const totalExposure = CASES
+    .filter((c) => c.exposure)
+    .reduce((sum, c) => sum + c.exposure!.mean, 0)
+  const exposureFormatted = '$' + Math.round(totalExposure / 1000) + 'K+'
 
   const stats = [
     { icon: Scale, label: 'Cases', value: '6', sub: '3 federal · 2 state · 1 habeas' },
     { icon: Building2, label: 'Courts', value: '3', sub: 'EDCA · Sacramento · Santa Clara' },
     { icon: Users, label: 'Defendants', value: String(DEFENDANTS.length), sub: 'CDCR (6) · DMV (1)' },
-    { icon: DollarSign, label: 'CDL Damages', value: totalDamages, sub: 'Plus ongoing $6k/mo losses' },
+    { icon: TrendingUp, label: 'Exposure', value: exposureFormatted, sub: 'Mean · 4 of 6 cases assessed' },
   ]
 
   return (
